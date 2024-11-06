@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function intruducirNumeros() {
+        var salir = false;
+
+        
+        var matriz = []
+        var fila = [];
+
+        while (!salir) {
+          var preguntaNumeros = prompt(
+            "Introduce los numeros (pulse f para salir o pulse s para pasar al siguiente vector): ",
+            ""
+          );
+
+          if (preguntaNumeros == "f") {
+            matriz.push(fila);
+
+            salir = true;
+          } else if (preguntaNumeros == "s") {
+            matriz.push(fila);
+
+            fila = [];
+          } else {
+            fila.push(Number(preguntaNumeros));
+          } 
+        }
+        return matriz;
+      }
+
+      function parImpar(matriz) {
+        var numerosPares = [];
+        var numerosImpares = [];
+        for (i = 0; i < matriz.length; i++) {
+          for (j = 0; j < matriz[i].length; j++) {
+            if (matriz[i][j] % 2 == 0) {
+                
+                numerosPares.push(matriz[i][j]);
+                
+            } else {
+
+                numerosImpares.push(matriz[i][j]);
+
+            }
+          }
+        }
+
+        alert("Los numeros pares son: "+numerosPares+"\n"+
+            "Los numeros impares son: "+numerosImpares
+        );
+
+      }
+
+      function principal() {
+        var matriz = intruducirNumeros();
+        parImpar(matriz);
+      }
+    </script>
+  </head>
+  <body onload="principal()"></body>
+</html>

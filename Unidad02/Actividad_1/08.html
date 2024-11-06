@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script>
+        function factoresPrimos() {
+
+            var preguntaNumero = prompt("Escribe el numero ", "");
+            var num = Number(preguntaNumero);
+            var factorPrimo = 2
+            var resultado = "";
+            var asterico = true;
+
+            if(num == 0) {
+                alert("Número no permitido")
+            } else if (num == 1) {
+                alert("1")
+            } else {
+                for(num ; num != 1 ; factorPrimo++){
+
+                    if(num % factorPrimo == 0) {
+                        num = num/factorPrimo;
+                        if(num != 1) {
+                            resultado = resultado + factorPrimo + "*"
+                        } else {
+                            resultado = resultado + factorPrimo
+                          
+                        }     
+                        
+                    factorPrimo--;
+                }
+            }
+             alert(resultado)
+            
+            
+            
+            
+
+        }
+    }
+    </script>
+</head>
+<body onload="factoresPrimos()">
+</body>
+</html>

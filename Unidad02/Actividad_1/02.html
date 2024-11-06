@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script>
+        function parInpar() {
+            var preguntaNum1 = prompt("Escribe un numero", "");
+
+            var num1 = parseInt(preguntaNum1);
+
+            var esPar = num1 % 2;
+
+            if (esPar == 0) {
+                alert("Es par")
+            } else {
+                alert("Es inpar")
+            }
+        }
+    </script>
+</head>
+<body onload="parInpar()">
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function mostrarCesta(cesta) {
+        var subtotal = 0;
+        var mensajeCesta =
+          "Cesta: \n" +
+          "Codigo    " +
+          "Nombre    " +
+          "Precio    " +
+          "Cantidad    " +
+          "Subtotal\n";
+
+        cesta.forEach((articulo) => {
+          mensajeCesta =
+            mensajeCesta +
+            articulo.codigo +
+            "               " +
+            articulo.nombre +
+            "               " +
+            articulo.precio +
+            "               " +
+            articulo.cantidad +
+            "               " +
+            articulo.subtotal +
+            "\n"
+            
+        });
+
+        var total = 0;
+        cesta.forEach((articulo) => {
+          total = total + articulo.subtotal;
+        });
+
+        mensajeCesta = mensajeCesta + "                                                            Total: "+total;
+
+        alert(mensajeCesta);
+      }
+
+      function insertarArticulo(codigo, cesta) {
+        var nombre = prompt("Nombre del producto", "");
+        var precio = Number(prompt("Precio del producto", ""));
+        var cantidad = Number(prompt("Cantidad del producto", ""));
+        var subtotal = cantidad * precio;
+
+        var articulo = {
+          codigo,
+          nombre,
+          precio,
+          cantidad,
+          subtotal,
+        };
+
+        cesta.push(articulo);
+
+        return cesta;
+      }
+
+      function borrarArticulo(cesta) {
+        var preguntaCodigo = Number(
+          prompt("Inserte el codigo del articulo que desea eliminar")
+        );
+        var indice = cesta.findIndex(articulo => articulo.codigo == preguntaCodigo);
+
+        if (indice != -1) {
+          cesta.splice(indice, 1);
+          alert("Articulo borrado")
+        } else {
+          alert("No se ha encontrado el articulo")
+        }
+
+
+      }
+
+      function vaciaCesta(cesta) {
+        cesta = [];
+        alert("La cesta se ha vaciado correctamente");
+        return cesta;
+      }
+
+      function principal() {
+        codigo = 1;
+        arrayProductos = [];
+        do {
+          var menu = Number(
+            prompt(
+              "1. Ver cesta \n" +
+                "2. Insertar un articulo\n" +
+                "3. Borrar un articulo\n" +
+                "4. Vaciar cesta\n" +
+                "5. Salir\n",
+              ""
+            )
+          );
+          switch (menu) {
+            case 1:
+              mostrarCesta(arrayProductos);
+              break;
+            case 2:
+              insertarArticulo(codigo, arrayProductos);
+              codigo++;
+              break;
+            case 3:
+              borrarArticulo(arrayProductos);
+              break;
+            case 4:
+              arrayProductos = vaciaCesta(arrayProductos);
+              break;
+          }
+        } while (menu != 5)
+      }
+    </script>
+  </head>
+  <body onload="principal()"></body>
+</html>

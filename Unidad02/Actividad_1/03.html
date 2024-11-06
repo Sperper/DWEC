@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script>
+        function mayorOmenor() {
+            var preguntaNum1 = prompt("Escribe el primer numero", "");
+            var preguntaNum2 = prompt("Escribe el segundo numero", "");
+            var preguntaNum3 = prompt("Escribe el tercer numero: ", "");
+
+            var num1 = parseInt(preguntaNum1);
+            var num2 = parseInt(preguntaNum2);
+            var num3 = parseInt(preguntaNum3);
+
+            if(num1 < 100 && num1 > 10 && num2 < 100 && num2 > 10 && num3 < 100 && num3 > 10) {
+                alert("Ok");
+            } else {
+                alert("No cumple");
+            }
+        }
+    </script>
+</head>
+<body onload="mayorOmenor()">
+</body>
+</html>

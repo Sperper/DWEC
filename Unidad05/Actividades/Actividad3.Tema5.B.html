@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      class Articulo {
+        #codigo;
+        #nombre;
+        #precio;
+        #cantidad;
+        #subtotal;
+
+        constructor(codigo, nombre, precio, cantidad) {
+          this.codigo = codigo;
+          this.nombre = nombre;
+          this.precio = precio;
+          this.cantidad = cantidad;
+          this.subtotal = this.cantidad * this.precio;
+        }
+
+        getCodigo() {
+          return this.codigo;
+        }
+        getNombre() {
+          return this.nombre;
+        }
+        getPrecio() {
+          return this.precio;
+        }
+        getCantidad() {
+          return this.cantidad;
+        }
+        getSubtotal() {
+          return this.subtotal;
+        }
+      }
+
+      class Cesta {
+        #cesta;
+        #articulo;
+
+        constructor() {
+          this.#cesta = [];
+          this.#articulo = new Articulo();
+        }
+      }
+
+      // Clase menu
+      class Menu {
+        #cesta;
+        #codigo;
+
+        constructor() {
+          this.cesta = [];
+          this.codigo = 1;
+        }
+
+        // Método para insertar el artículo
+        #insertarArticulo() {
+          var nombre = prompt("Nombre del producto", "");
+          var precio = Number(prompt("Precio del producto", ""));
+          var cantidad = Number(prompt("Cantidad del producto", ""));
+
+          var articulo = new Articulo(this.codigo, nombre, precio, cantidad);
+
+          this.cesta.push(articulo);
+          this.codigo++;
+        }
+
+        // Método para mostrar la cesta
+        #mostrarCesta() {
+          var subtotal = 0;
+          var mensajeCesta =
+            "Cesta: \n" +
+            "Codigo    " +
+            "Nombre    " +
+            "Precio    " +
+            "Cantidad    " +
+            "Subtotal\n";
+
+          this.cesta.forEach((articulo) => {
+            mensajeCesta =
+              mensajeCesta +
+              articulo.getCodigo() +
+              "               " +
+              articulo.getNombre() +
+              "               " +
+              articulo.getPrecio() +
+              "               " +
+              articulo.getCantidad() +
+              "               " +
+              articulo.getSubtotal() +
+              "\n";
+          });
+          var total = 0;
+          this.cesta.forEach((articulo) => {
+            total = total + articulo.subtotal;
+          });
+
+          mensajeCesta =
+            mensajeCesta +
+            "                                                            Total: " +
+            total;
+
+          alert(mensajeCesta);
+        }
+
+        // Método para borrar la cesta
+        #borrarArticulo() {
+          var preguntaCodigo = Number(
+            prompt("Inserte el codigo del articulo que desea eliminar")
+          );
+          var indice = this.cesta.findIndex(
+            (articulo) => articulo.codigo == preguntaCodigo
+          );
+
+          if (indice != -1) {
+            this.cesta.splice(indice, 1);
+            alert("Articulo borrado");
+          } else {
+            alert("No se ha encontrado el articulo");
+          }
+        }
+
+        // Método para vaciar la cesta
+        #vaciarCesta() {
+          this.cesta = [];
+          alert("La cesta se ha vaciado correctamente");
+        }
+
+        // Método que muestra el menu principal
+        principal() {
+          do {
+            var menu = Number(
+              prompt(
+                "1. Ver cesta \n" +
+                  "2. Insertar un articulo\n" +
+                  "3. Borrar un articulo\n" +
+                  "4. Vaciar cesta\n" +
+                  "5. Salir\n",
+                ""
+              )
+            );
+            switch (menu) {
+              case 1:
+                this.#mostrarCesta();
+                break;
+              case 2:
+                this.#insertarArticulo();
+                break;
+              case 3:
+                this.#borrarArticulo();
+                break;
+              case 4:
+                this.#vaciarCesta();
+                break;
+            }
+          } while (menu != 5);
+        }
+      }
+
+      let menu = new Menu();
+    </script>
+  </head>
+  <body onload="menu.principal()"></body>
+</html>

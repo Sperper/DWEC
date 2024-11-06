@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function intrudcirNumeros() {
+        var salir = false;
+        var listadoNum = [];
+        var posicion = 0;
+
+        while (!salir) {
+          var preguntaNumeros = prompt(
+            "Introduce los numeros (pulse f para salir): ",
+            ""
+          );
+
+          if (preguntaNumeros == "f") {
+            alert("Numeros introducidos correctamente");
+            salir = true;
+          } else {
+            listadoNum[posicion] = Number(preguntaNumeros);
+            posicion++;
+          }
+        }
+        return listadoNum;
+      }
+
+      // Funcion para saber la mediana
+      function mediana(listaN) {
+        listaN.sort(function (a, b) {return a - b;}); // Usamos la funcion .sort para ordenar de menor a mayor los numeros
+        var posicionMedio = Math.floor(listaN.length / 2); // Sacamos cual es la posicion del array que tiene el numero que necesitamos y redondeamos a la baja porque el array empieza a contar por 0
+
+        if (listaN.length % 2 == 0) { // Usamos el if para diferenciar si la cantidad de numeros es par o impar
+            // guardamos los numeros
+            var num1 = listaN[posicionMedio]; 
+            var num2 = listaN[posicionMedio - 1];
+            // dividimos
+            var m = (num1 + num2)/2;
+            alert("La mediana es "+ m);
+        } else {
+            alert("la mediana es "+ listaN[posicionMedio]); // Si es impar mostramo el numero directamente
+        }
+       
+      }
+
+      function principal() {
+        var lista = intrudcirNumeros();
+        mediana(lista);
+      }
+    </script>
+  </head>
+  <body onload="principal()"></body>
+</html>

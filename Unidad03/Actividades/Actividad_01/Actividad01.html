@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script>
+
+        function elegirFigura(){
+            var figuraElegida = "";
+            var preguntaNum2 = Number(prompt("Elige una opcion:\n"
+            +"1. Cubo\n"
+            +"2. Esfera\n"
+            +"3. Cilindro\n"
+            ,""));
+            switch (preguntaNum2) {
+                case 1:
+                    figuraElegida = "Cubo"
+                    break;
+                case 2: 
+                    figuraElegida = "Esfera"
+                    break;
+                case 3:
+                    figuraElegida = "Cilindro"
+                    break;
+            }
+            return figuraElegida;
+        }
+
+        function introducirValores(figura){
+            var opcion = figura;
+            var valoresFigura;
+            switch (opcion){
+                case "Cubo":
+                    var preguntaNum2 = prompt("Introduzca la altura del cubo:", ""); 
+                    alturaIntroducida = Number(preguntaNum2);
+                    var valoresFigura = {nombreFigura : "Cubo" , alturaCubo : alturaIntroducida}
+                    break;
+                case "Esfera": 
+                    var preguntaNum2 = prompt("Introduzca el radio de la esfera:", ""); 
+                    radioIntroducido = Number(preguntaNum2)
+                    var valoresFigura = {nombreFigura : "Esfera" , radioEsfera : radioIntroducido};
+                    break;
+                case "Cilindro":
+                    var preguntaNum2 = prompt("Introduzca el radio del cilindro:", ""); 
+                    radioIntroducido = Number(preguntaNum2);
+                    var preguntaNum3 = prompt("Introduzca la altura del cilindro:", ""); 
+                    alturaIntroducida = Number(preguntaNum3); 
+                    var valoresFigura = {nombreFigura : "Cilindro" , alturaCilindro : altura, radioCilindro : radioIntroducido}
+                    break;
+            }
+            return valoresFigura;
+                
+        }
+
+        function volumen(figuraElegida){
+            var volumenDeFigura;
+            if(figuraElegida.nombreFigura == "Cubo") {
+                volumenDeFigura = figuraElegida.alturaCubo * figuraElegida.alturaCubo * figuraElegida.alturaCubo;
+                alert("El volumen del cubo es: "+volumenDeFigura);
+            } else if(figuraElegida.nombreFigura == "Esfera") {
+                volumenDeFigura = 0.75 * Math.PI()  * (figuraElegida.rardioEsfera * figuraElegida.rardioEsfera * figuraElegida.rardioEsfera);
+                alert("El volumen del cilindro es: "+  volumenDeFigura);
+            }
+        }
+
+        function menuFigura() {
+            do{
+                var figura;
+                var valoresDeFigura;
+                var preguntaNum1 = prompt("Elige una opcion:\n"
+                +"1. Elija entre cubo, esfera o cilindro\n"
+                +"2. Introduzca los valores de las variables\n"
+                +"3. Cálculo de volumen\n"
+                +"4. Cálculo de área\n"
+                +"5. Finalizar\n"
+                ,"");
+
+                
+                if(preguntaNum1 == 1){
+                    figura = elegirFigura();
+                       
+                } else if (preguntaNum1 == 2) {
+                    valoresDeFigura = introducirValores(figura);
+                } else if (preguntaNum1 == 3) {
+                    volumen(valoresDeFigura);
+                }
+            
+            }while(preguntaNum1 != 5)
+            
+        }
+    </script>
+</head>
+<body onload="menuFigura()">
+</body>
+</html>

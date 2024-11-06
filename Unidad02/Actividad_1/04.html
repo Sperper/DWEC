@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script>
+        function prima() {
+            var preguntaSueldo = prompt("Escribe el sueldo del trabajador", "");
+            var preguntaAntiguedad = prompt("Escribe los años de antigüedad del trabajador", "");
+            
+
+            var sueldo = Number(preguntaSueldo);
+            var antiguedad = Number(preguntaAntiguedad);
+            
+
+            if(sueldo < 750 && antiguedad >= 10) {
+                valorfinal = sueldo + (sueldo * 0.10);
+                alert("El valor final es: "+valorfinal)
+            } else if(sueldo > 750 && antiguedad >= 10){
+                valorfinal = sueldo + (sueldo * 0.05);
+                alert("El valor final es: "+valorfinal)
+            } else {
+                alert("El valor final es: "+sueldo)
+            }
+        }
+    </script>
+</head>
+<body onload="prima()">
+</body>
+</html>

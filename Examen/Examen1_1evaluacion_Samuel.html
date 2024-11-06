@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function introducirNotas() {
+        var salir = false;
+
+        var criterios = [];
+        var criterio = [];
+        var numeroCriterio = 1;
+
+        // Bucle while que permite insertar numeros hasta que la variable 'salir' sea true
+        while (!salir) {
+          var preguntaNotas = prompt(
+            "Inserte las notas del criterio " +
+              numeroCriterio +
+              " ('s' para insertar un nuevo criterio, 'f' para finalizar)",
+            ""
+          );
+
+          // if que permite salir, cambiar de criterio e introducir los datos
+          if (preguntaNotas == "f") {
+            criterios.push(criterio);
+
+            salir = true;
+          } else if (preguntaNotas == "s") {
+            criterios.push(criterio);
+            criterio = [];
+            numeroCriterio++;
+          } else {
+            nota = Number(preguntaNotas);
+            if(!isNaN(nota) && nota > 0) {
+                criterio.push(nota);
+            } else {
+                alert('La nota solo puede ser un numero mayor que cero')
+            }
+          }
+        }
+        return criterios;
+      }
+
+      // Funcion para calcular las medias
+      function medias(notas) {
+        var arrayMedias = [];
+        var suma = 0;
+        var mediaSuma = 0;
+        var contador = 1;
+
+        // Bucle for para calcular la media de cada criterio
+        for (var i = 0; i < notas.length; i++) {
+          for (var j = 0; j < notas.length; j++) {
+            suma = suma + notas[i][j];
+          }
+          mediaSuma = suma / notas.length;
+          mediaSuma.toFixed(1);
+          arrayMedias.push(mediaSuma);
+          suma = 0;
+          alert("La media del criterio es " + contador + ": " + mediaSuma);
+          contador++;
+        }
+
+        // Bucle for para calcular la media de cada criterio
+        for (var i = 0; i < arrayMedias.length; i++) {
+          suma = suma + arrayMedias[i];
+        }
+        mediaSuma = suma / arrayMedias.length;
+        mediaSuma.toFixed(1);
+        alert("La nota media final es: " + mediaSuma);
+      }
+
+      function notasMaximas(notas) {
+        var arrayMaximos = [];
+
+        // Bucle for para ordenar las notas de cada array de mayor a menor
+        for (i = 0; i < notas.length; i++) {
+            notas[i].sort(function (a, b) {return b - a;});
+        }
+
+        // Bucle for para guardar las notas maximas de cada criterio
+        for (i = 0; i < notas.length; i++) {
+           arrayMaximos.push(notas[i][0]) 
+        }
+
+        console.log(arrayMaximos);
+      }
+
+      // Funcion principal del programa
+      function principal() {
+        var notasCriterios = introducirNotas();
+        medias(notasCriterios);
+        notasMaximas(notasCriterios);
+      }
+    </script>
+  </head>
+  <body onload="principal()"></body>
+</html>

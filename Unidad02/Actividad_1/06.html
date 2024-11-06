@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script>
+        function prima() {
+            var coeficiente1 = prompt("Escribe el primer coeficiente: ", "");
+            var coeficiente2 = prompt("Escribe el segundo coeficiente: ", "");
+            var coeficiente3 = prompt("Escribe el tercer coeficiente: ", "");
+
+            var a = Number(coeficiente1);
+            var b = Number(coeficiente2);
+            var c = Number(coeficiente3);
+
+            var raizCuadrada = Math.sqrt(b*b-4*a*c);
+            var operacionDeRaiz = b*b-4*a*c;
+
+            if(operacionDeRaiz < 0){
+                alert("Resultado no válido")
+            } else {
+                var resultado1 = (-b+raizCuadrada)/(2*a)
+                var resultado2 = (-b-raizCuadrada)/(2*a)
+                alert("El primer resultado de la x es: "+resultado1+"\n"+
+                     "El segundo resultado de la x es: "+resultado2);
+            }
+        }
+    </script>
+</head>
+<body onload="prima()">
+</body>
+</html>
