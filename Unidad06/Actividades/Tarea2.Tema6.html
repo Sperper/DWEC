@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 1 Tema 6</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      class usuario {
+        #arrUsuario;
+
+        constructor() {
+            this.#arrUsuario = ['muel','mbappe','tucan'];
+        }
+      }
+
+
+      class contraseñas {
+        #arrContraseñas;
+
+        constructor() {
+            this.#arrContraseñas = ['Muel1234', 'Mbappe12', 'Tucan123']
+        }
+      }
+
+      class valida {
+
+      }
+    </script>
+  </head>
+  <body>
+    <!-- ---------------------------------------------------------------------------------------------------------- -->
+    <style type="text/css">
+      input:invalid {
+        border: 1px solid red;
+      }
+      input:valid {
+        border: 1px solid green;
+      }
+    </style>
+
+    <h1>Iniciar Sesion</h1>
+
+    <div class="row">
+      <div class="col">
+        Usuario:
+        <input
+          type="text"
+          class="form-control"
+          aria-label="First name"
+          id="nombre"
+          required
+          name="nombre"
+        />
+      </div>
+      <div class="col">
+        Contraseña:
+        <input
+          type="password"
+          class="form-control"
+          aria-label="Last name"
+          id="contraseña"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$"
+          name="contraseña"
+        />
+      </div>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Validar</button>
+  </body>
+</html>
