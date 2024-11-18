@@ -17,9 +17,86 @@
 
     <!-- Codigo -->
     <script>
-        
-    </script>
+      class Producto {
+        #producto = {};
+        constructor(id, nombre, precio, imagen) {
+          this.#producto.id = id;
+          this.#producto.nombre = nombre;
+          this.#producto.precio = precio;
+          this.#producto.imagen = imagen;
+          return this.#producto;
+        }
+      }
 
+      class ContProductos {
+        #productos;
+
+        constructor(productos) {
+          this.#productos = productos;
+          generarProductos();
+        }
+
+        generarProductos() {
+          this.#productos;
+
+          const añadir = document.getElementById("contProductos");
+
+          añadir.appendChild("div")
+
+        }
+
+      }
+
+      class Cesta {
+        #cesta;
+
+        constructor(cesta) {
+          this.#cesta = cesta;
+        }
+      }
+
+      var productos = [
+        [
+          1,
+          "Bolso",
+          20,
+          "https://cdn.pixabay.com/photo/2014/09/13/15/38/handbag-444171_960_720.jpg",
+        ],
+        [
+          2,
+          "Móvil",
+          120,
+          "https://cdn.pixabay.com/photo/2016/11/29/05/08/apple-1867461_1280.jpg",
+        ],
+        [
+          3,
+          "Taza",
+          10,
+          "https://cdn.pixabay.com/photo/2013/07/13/09/51/drink-156144_1280.png",
+        ],
+        [
+          4,
+          "Zapatos",
+          40,
+          "https://cdn.pixabay.com/photo/2021/03/08/12/31/oxford-shoes-6078993_960_720.jpg",
+        ],
+        [
+          5,
+          "Vestido",
+          34,
+          "https://cdn.pixabay.com/photo/2022/06/23/21/30/bride-7280683_1280.jpg",
+        ],
+        [
+          6,
+          "Cámara",
+          300,
+          "https://cdn.pixabay.com/photo/2023/01/05/21/32/camera-7699765_1280.jpg",
+        ],
+      ];
+
+      window
+
+    </script>
   </head>
   <body>
     <div class="container">
@@ -28,12 +105,17 @@
           <i class="bi bi-mastodon">De todo....</i>
         </h1>
         <h4>Ejemplo cálculo de cesta o carrito de la compra</h4>
-        <br>
+        <br />
         <div class="row">
-          <div class="col"></div>
+          <!-- Productos -->
+          <div id="contProductos" class="col">
+            
+          </div>
+
+          <!-- Cesta -->
           <div class="col">
             <table class="table">
-            <h4><i class="bi bi-cart4"></i> Cesta</h4>
+              <h4><i class="bi bi-cart4"></i> Cesta</h4>
               <thead>
                 <tr>
                   <th scope="col">Id</th>
@@ -43,10 +125,9 @@
                   <th scope="col">Subtotal</th>
                 </tr>
               </thead>
-              <tbody>
-              </tbody>
+              <tbody></tbody>
             </table>
-            <p align="right">Total: </p>
+            <p align="right">Total:</p>
             <p align="right">Total + IVA(21%):</p>
           </div>
         </div>
