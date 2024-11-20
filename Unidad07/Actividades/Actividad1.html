@@ -37,14 +37,23 @@
         }
 
         generarProductos() {
-          this.#productos;
+          const contenedor = document.getElementById('contProductos');
+          contenedor.innerHTML('');
+          const producto = document.createElement('div');
+          producto.className = 'col-md-12 mb-3';
+          producto.innerHTML = `
+            <div class="card d-flex flex-row">
+                            <img src="${this.#productos[0][3]}" class="card-img-top" alt="${this.#productos[0][1]}" style="width: 100px; height: 100px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">${this.#productos[0][1]}</h5>
+                                <p class="card-text">Precio: $${this.#productos[0][2]}</p>
+                                <button class="btn btn-primary" data-id="${producto.codigo}">Añadir</button>
+                            </div>
+                        </div>
+          `
 
-          const añadir = document.getElementById("contProductos");
-
-          añadir.appendChild("div")
-
+          
         }
-
       }
 
       class Cesta {
@@ -93,9 +102,9 @@
           "https://cdn.pixabay.com/photo/2023/01/05/21/32/camera-7699765_1280.jpg",
         ],
       ];
-
-      window
-
+      
+      contProducto = new ContProductos(productos);
+      window.onload(contProducto);
     </script>
   </head>
   <body>
