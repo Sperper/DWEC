@@ -129,6 +129,11 @@
             boton.className = "btn btn-primary";
             boton.textContent = "Añadir";
 
+            boton.addEventListener('click', () => {
+                        let cantidad = Number(document.getElementById(`cantidad-${producto.codigo}`).value);
+                        //cantidad mayor que 0
+                    });
+
             body.append(titulo, precio, inputCantidad, boton);
             divCard.append(imagen, body);
             card.appendChild(divCard);
@@ -138,50 +143,52 @@
       }
 
       class Cesta {
-
         #cesta = [];
         #productosCesta = [];
 
+        #cantidad;
+
         constructor(productosDisponibles) {
           this.#productosCesta = productosDisponibles;
+
         }
 
-        añadirProducto() {
-          let cantidad 
-        }
+        añadirProducto() {}
 
         renderizarCesta(id, cantidad) {
-          let cesta = document.getElementById('cesta');
+          let cesta = document.getElementById("cesta");
 
-          for(let i=0; i<this.#productosCesta.length; i++) {
-            if (this.#productosCesta[i].id = id) {
-              let tr = document.createElement('tr')
-              tr.className = 'producto';
 
-              let tdCodigo = document.createElement('td');
-              tdCodigo.className = 'codigo';
-              tdCodigo.innerText = this.#productosCesta[i].id;
+          for (let i = 0; i < this.#productosCesta.length; i++) {
+            this.#cantidad = Number(document.getElementById(`cantidad-${this.#productosCesta[i].id}`).value);
 
-              let tdNombre = document.createElement('td');
-              tdNombre.className = 'nombreProducto';
-              tdCodigo.innerText = this.#productosCesta[i].nombre;
+            let tr = document.createElement("tr");
+            tr.className = "producto";
 
-              let tdCantidad = document.createElement('td');
-              tdCantidad.className = 'cantidad';
-              
-              let tdPrecio = document.createElement('td');
-              tdPrecio.className = 'precio';
-              tdPrecio.innerText = this.#productosCesta[i].precio;
+            let tdCodigo = document.createElement("td");
+            tdCodigo.className = "codigo";
+            tdCodigo.innerText = this.#productosCesta[i].id;
 
-              let tdSubtotal = document.createElement('td');
-              tdSubtotal.className = 'subtotal';
-              tdSubtotal.innerText = this.#productosCesta[i].cantidad * this.#productosCesta[i].precio;
-            }
+            let tdNombre = document.createElement("td");
+            tdNombre.className = "nombreProducto";
+            tdCodigo.innerText = this.#productosCesta[i].nombre;
+
+            let tdCantidad = document.createElement("td");
+            tdCantidad.className = "cantidad";
+            tdCantidad.innerText = this.#cantidad;
+
+
+            let tdPrecio = document.createElement("td");
+            tdPrecio.className = "precio";
+            tdPrecio.innerText = this.#productosCesta[i].precio;
+
+            let tdSubtotal = document.createElement("td");
+            tdSubtotal.className = "subtotal";
+            tdSubtotal.innerText =
+              this.#productosCesta[i].cantidad * this.#productosCesta[i].precio;
           }
         }
-
       }
-
 
       let ArrProductos = [
         [
